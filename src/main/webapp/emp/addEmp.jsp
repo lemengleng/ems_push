@@ -66,18 +66,6 @@
                             <input type="text" class="inputgri" name="bir" value=""/>
                         </td>
                     </tr>
-                    <tr>
-                        <td valign="middle" align="right">
-                            请选择部门:
-                        </td>
-                        <td valign="middle" align="left">
-                            <select name="dept_id" style="width:178px;">
-                                <c:forEach items="${deptlist}" var="dept">
-                                    <option value="${dept.id}">${dept.name}</option>
-                                </c:forEach>
-                            </select>
-                        </td>
-                    </tr>
                 </table>
                 <p>
                     <input type="submit" class="button" value="Confirm"/>
