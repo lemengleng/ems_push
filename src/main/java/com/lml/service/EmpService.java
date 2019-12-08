@@ -9,6 +9,7 @@ public interface EmpService {
 
     List<Emp> queryByPage(Integer begin, Integer size);
 
+    Emp queryOne(Emp emp);
     void add(Emp emp);
 
     void delete(Emp emp);

@@ -1,5 +1,6 @@
 package com.lml.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class Emp implements Serializable {
     private String name;
     private String salary;
     private String age;
+    @JsonFormat(pattern = "yyyy/MM/dd")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date bir;
     private String dept_id;

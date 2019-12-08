@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%request.setAttribute("path", request.getContextPath());%>
 <html>
 <head>
@@ -8,9 +9,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css"
           href="${path}/css/style.css"/>
+    <script src="${path}/js/jquery-1.8.3.js"></script>
+    <script>
+        $(function () {
+            $.post("${path}/emp/queryOne", {"id": "${param.id}"}, function (emp) {
+                $("#emp_id").val(emp.id);
+                $("#name").val(emp.name);
+                $("#salary").val(emp.salary);
+                $("#age").val(emp.age);
+                $('#bir').val(emp.bir);
+            }, "json");
+        })
+    </script>
 </head>
 
 <body>
+<fmt:formatDate pattern="yyyy/MM/dd" value=""/>
 <div id="wrap">
     <div id="top_content">
         <div id="header">
@@ -42,7 +56,7 @@
                             id:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" value="${emp.id}" name="id" readonly="readonly">
+                            <input type="text" name="id" id="emp_id" readonly="readonly">
                         </td>
                     </tr>
                     <tr>
@@ -50,7 +64,7 @@
                             name:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="name" value="${emp.name}"/>
+                            <input type="text" class="inputgri" id="name" name="name" value="${emp.name}"/>
                         </td>
                     </tr>
                     <tr>
@@ -58,7 +72,7 @@
                             salary:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="salary" value="${emp.salary}"/>
+                            <input type="text" class="inputgri" id="salary" name="salary" value="${emp.salary}"/>
                         </td>
                     </tr>
                     <tr>
@@ -66,7 +80,7 @@
                             age:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="age" value="${emp.age}"/>
+                            <input type="text" class="inputgri" id="age" name="age" value="${emp.age}"/>
                         </td>
                     </tr>
                     <tr>
@@ -74,28 +88,11 @@
                             bir:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="bir"
-                                   value="<fmt:formatDate value='${emp.bir}' pattern="yyyy/MM/dd"/>"/>
+                            <input type="text" class="inputgri" id="bir" name="bir"
+                                   value="<fmt:formatDate value='${emp.bir}'   pattern="yyyy/MM/dd"/>"/>
                         </td>
                     </tr>
-                    <tr>
-                        <td valign="middle" align="right">
-                            请选择部门:(处理默认值选中)
-                        </td>
-                        <td valign="middle" align="left">
-                            <select name="dept_id" style="width:178px;">
-                                <c:forEach items="${deptlist}" var="d">
-                                    <c:if test="${emp.dept_id==d.id}">
-                                        <option value="${d.id}" selected>${d.name}</option>
-                                    </c:if>
-                                    <c:if test="${emp.dept_id!=d.id}">
-                                        <option value="${d.id}">${d.name}</option>
-                                    </c:if>
-                                </c:forEach>
 
-                            </select>
-                        </td>
-                    </tr>
                 </table>
                 <p>
                     <input type="submit" class="button" value="Confirm"/>

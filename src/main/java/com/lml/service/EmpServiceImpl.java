@@ -28,6 +28,12 @@ public class EmpServiceImpl implements EmpService {
         return empDao.selectByRowBounds(new Emp(), new RowBounds(begin, size));
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public Emp queryOne(Emp emp) {
+        return empDao.selectOne(emp);
+    }
+
     @Override
     public void add(Emp emp) {
         empDao.insert(emp);

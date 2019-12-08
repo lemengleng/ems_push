@@ -1,8 +1,9 @@
 server:
   port: 8989
-  jsp-servlet:
-    init-parameters:
-      development: true
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
 spring:
   mvc:
     view:

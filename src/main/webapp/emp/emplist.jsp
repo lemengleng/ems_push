@@ -61,7 +61,7 @@
                         Bir
                     </td>
                     <td>
-                        Dept
+                        Dept_id
                     </td>
                     <td>
                         Operation(处理删除的友情提醒)
@@ -85,11 +85,11 @@
                             <fmt:formatDate value="${emp.bir}"/>
                         </td>
                         <td>
-                                ${sessionScope.dept.name}
+                                ${emp.dept_id}
                         </td>
                         <td>
                             <a href="${path}/emp/delete?id=${emp.id}" onclick="fun()">delete emp</a>&nbsp;<a
-                                href="${path}/emp/updatebefore?id=${emp.id}">update emp</a>
+                                href="${path}/emp/updateEmp.jsp?id=${emp.id}">update emp</a>
                         </td>
                     </tr>
                 </c:forEach>
